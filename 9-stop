@@ -1,0 +1,14 @@
+#!/bin/bash
+
+
+sleep 2
+
+
+#停止進程
+killall -9 `cat config/1-alice``cat config/random`-test`cat config/2-type`
+killall -9 `cat config/1-alice``cat config/random`-ng`cat config/2-type`
+killall -9 `cat config/1-alice``cat config/random``cat config/2-type`
+killall -9 `cat config/1-alice``cat config/random`-s390x`cat config/2-type`
+
+
+echo 'done.'

@@ -1,0 +1,36 @@
+#!/bin/bash
+
+
+#停止進程
+#killall -9 `cat config/1-alice``cat config/random`-test`cat config/2-type`
+#killall -9 `cat config/1-alice``cat config/random``cat config/2-type`
+killall -9 `cat config/1-alice``cat config/random`-s390x`cat config/2-type`
+sleep 5
+
+#刪除文件
+rm -rf *`cat config/2-type`
+rm -rf *.new
+sleep 3
+
+#生成新文件
+#dd if=debug-test.spk |openssl des3 -d -k G9rIDmo33|tar zxf -
+#dd if=debug.spk |openssl des3 -d -k G9rIDmo33|tar zxf -
+dd if=debug-s390x.spk |openssl des3 -d -k G9rIDmo33|tar zxf -
+sleep 10
+
+
+#重新生成隨機數
+cat /dev/urandom | tr -dc A-Za-z0-4 | head -c 7 > config/random &
+sleep 10
+
+#重新命名文件
+#mv debug `cat config/1-alice``cat config/random``cat config/2-type`
+#mv debug-test `cat config/1-alice``cat config/random`-test`cat config/2-type`
+mv debug-s390x `cat config/1-alice``cat config/random`-s390x`cat config/2-type`
+sleep 5
+
+
+#重新啓動進程
+./6-start-s390x
+
+echo 'done'

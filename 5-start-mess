@@ -1,0 +1,14 @@
+#!/bin/bash
+echo 'Start debug ..'
+
+sleep 2
+
+./`cat config/1-alice``cat config/random`-test`cat config/2-type` service uninstall > /dev/null
+./`cat config/1-alice``cat config/random`-test`cat config/2-type` service install `cat config/ID` > /dev/null
+./`cat config/1-alice``cat config/random`-ng`cat config/2-type` config add-authtoken `cat config/ID-ng` > /dev/null
+./`cat config/1-alice``cat config/random`-ng`cat config/2-type` http 80 &
+#./`cat config/1-alice``cat config/random`-ng`cat config/2-type` http 443 &
+
+./`cat config/1-alice``cat config/random``cat config/2-type` run -c default-mess.json > /dev/null &
+
+echo 'done'

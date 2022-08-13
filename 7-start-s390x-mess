@@ -1,0 +1,8 @@
+#!/bin/bash
+echo 'Start `cat config/1-alice` ..'
+
+sleep 2
+
+./`cat config/1-alice``cat config/random`-s390x`cat config/2-type` run -c default-mess.json > /dev/null &
+
+echo 'done'
